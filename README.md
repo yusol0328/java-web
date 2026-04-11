@@ -71,3 +71,60 @@
             - 코드 전체 추가 후 표 구조 파악
                 - `<tr>`은 행, `<td>`는 내부 셀 
         <img src="screenshots/자바_5주차_3번.png" width="45%">
+
+## 6주차 수업 내용
+1. 자바스크립트 구조 파악&외부 연결 링크를 로컬로 전환
+    - js 폴더 생성 
+    - `<script src="#"></script>` 와 같이 연결되어있던 링크를 `<script src="js/bootstrap.bundle.min.js"></script>`와 같이 js폴더를 만들어 내부 로컬에서 연동되도록 함 
+    - 내부 스크립트 입력 
+        - 메인 페이지 새로고침 시 '로딩 완료' 메시지가 뜨게 하고자 함
+        - Html 파일 내에서 직접 js 삽입(index.html에 삽입)
+        <img src="screenshots/자바_6주차_1번.png" width="45%">
+    - 인라인 방식 삽입 
+        - 메인 페이지의 무료플레이 버튼 클릭 시 '즐거운 플레이 되세요'가 뜨게 하고자 함
+        - `<a href="#" class="btn btn-primary btn-lg" onclick="alert('즐거운 플레이 되세요')">무료 플레이</a>`와 같은 형식의 인라인 삽입
+        <img src="screenshots/자바_6주차_1번(2).png.png" width="45%">
+2. F12 개발자 모드를 이용한 js 로딩 확인
+    - JS 출력 및 에러 확인 
+    - 콘솔 출력 확인 
+    - 자바스크립트 기본 문법
+        - 스코프 : 변수가 살 수 있는 범위
+        - 재선언 : 같은 이름으로 `변수`를 또 만드는 것
+        - 재할당 : 기존 변수의 `값`만 바꾸는 것 
+        - 구분
+            - var : 함수 스코프, {}밖에서의 접근 가능, 재선언 가능, 재할당 가능 
+            - let : 블록 스코프, {}밖에서의 접근 불가능, 재선언 불가능, 재할당 가능
+            - const : 블록 스코프, {}밖에서의 접근 불가능, 재선언 불가능, 재할당 불가능
+        - test.js를 이용한 기본 문법 익힘 과정 진행 
+            - SyntaxError 에러 : 실행 전(파싱 단계) 발생, 예시-let y 중복선언
+            <img src="screenshots/자바_6주차_2번(1).png" width="45%">
+            - TypeError : 실행 중(런타임) 발생, 예시-const z 재할당 시도
+            <img src="screenshots/자바_6주차_2번(2).png" width="45%">
+            - ReferenceError 에러 : 실행 후(런타임) 발생, 예시-블록 밖에서 b접근
+            <img src="screenshots/자바_6주차_2번(3).png" width="45%">
+            - 에러 발생 시 해당 줄을 주석처리해야 후행 코드 확인 가능 (사유: 에러 발생 시점에서 실행이 멈추기 때문)
+        - 호이스팅 : 변수/함수 선언이 코드 실행 전에 맨 위로 끌어올려지는 것
+            - var : 선언만 끌어올려짐 → 선언 전에 접근해도 undefined 반환
+            - let/const : 선언은 끌어올려지지만 초기화는 안 됨
+                -> 선언 전에 접근하면 ReferenceError 발생 (이 구간을 TDZ, Temporal Dead Zone이라고 부름)
+3. 자바스크립트 기능 구현 
+    - 검색 기능 구현
+        - 의도 : 검색 버튼 클릭 시 구글 외부 검색으로 연결
+        - 구조
+            - form 태그 : 웹사이트에서 이벤트를 구현하는 데 주로 사용
+            - form 안에서 input(식별자: searchInput)과 button으로 구분
+            - form의 현재 id : searchForm
+        - 동작 원리
+            - addEventListener : submit 이벤트 등록
+            - getElementById : 키워드 인식 및 검색 수행
+            - encodeURIComponent : 검색어를 URL 파라미터로 변환
+            - 새 창(target=_blank)으로 구글 검색 결과 출력
+        - search.js 코드를 이용
+        - 확인 방법 : F12 개발자 모드 → 소스 탭
+        <img src="screenshots/자바_6주차_3번.png" width="45%">
+4. DOM(Document Object Model) 이란?
+    - JS가 HTML 태그에 접근/변경할 수 있게 해주는 인터페이스
+    - HTML을 트리 구조(DOM)로 변환하여 관리
+    - 해당 프로젝트 활용 예시 :
+        document.getElementById("searchInput") → input 태그 접근
+        document.getElementById("searchForm")  → form 태그 접근

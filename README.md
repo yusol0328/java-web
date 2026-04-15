@@ -128,3 +128,16 @@
     - 해당 프로젝트 활용 예시 :
         document.getElementById("searchInput") → input 태그 접근
         document.getElementById("searchForm")  → form 태그 접근
+
+## 7주차 수업 내용
+
+1. css파일의 분리 관리
+    - 기존 index.html 파일에 있던 style 소스코드를 분리해 css폴더로 분리
+    - main.css 파일 생성 후 디자인 모두 옮김 
+    - 기존의 코드 자리에는 .css를 연동시킴 
+    <img src="screenshots/자바_7주차_1번.png" width="45%">
+2. 웹사이트 내부 검색 기능
+    - 의도: 새로운 탭이 아닌 웹사이트 내부에서의 검색 결과가 출력되도록 하고자 함
+    - 기존의 search.js 주석처리 후 하단 추가 작성(index.html에 대한 수정)
+    - 결과 : 검색창에 챔피언 이름 검색 시 창 유지 및 검색결과 출력  
+    <img src="screenshots/자바_7주차_2번.png" width="45%">

@@ -141,3 +141,10 @@
     - 기존의 search.js 주석처리 후 하단 추가 작성(index.html에 대한 수정)
     - 결과 : 검색창에 챔피언 이름 검색 시 창 유지 및 검색결과 출력  
     <img src="screenshots/자바_7주차_2번.png" width="45%">
+3. 마무리&과제
+    - 데이터 정의 추가 : 티모, 렉사이, 야스오 등 3개의 챔피언 추가 
+        - index.html 수정 -> 메인 페이지에서의 챔피온 데이터 게시 
+    <img src="screenshots/자바_7주차_3번.png" width="45%">
+        - search.js의 챔피언 데이터 배열에 챔피언 추가
+    <img src="screenshots/자바_7주차_3번(2).png" width="45%">
+    - 검색어 기능 추가 : showMainScreen()함수 추가, 조건에 맞추어 기능 구현 

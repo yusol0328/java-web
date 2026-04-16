@@ -40,6 +40,10 @@ const CHAMPIONS = [
 { name: '브라이어', engName: 'Briar', role: '전사', lane: '정글', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Briar.png', difficulty: '중' },
 { name: '잭스', engName: 'Jax', role: '전사', lane: '탑', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Jax.png', difficulty: '하' },
 { name: '징크스', engName: 'Jinx', role: '원거리딜러', lane: '원딜', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Jinx.png', difficulty: '중' },
+
+{ name: '티모', engName: 'Teemo', role: '암살자', lane: '탑', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Teemo.png', difficulty: '하' },
+{ name: '야스오', engName: 'Yasuo', role: '전사', lane: '미드', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Yasuo.png', difficulty: '상' },
+{ name: '렉사이', engName: "Rek'Sai", role: '전사', lane: '정글', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/RekSai.png', difficulty: '중' },
 ];
 
 // ── 뉴스 데이터 ──────────────────────────────────────────────
@@ -50,7 +54,10 @@ const NEWS = [
 // ── 검색 실행 ────────────────────────────────────────────────
 function performSearch(query) {
 const q = query.trim().toLowerCase(); // 앞 뒤 공백제거, 소문자 변환
-if (!q) return;
+if (!q) {
+    showMainScreen(); //performSearch 에서 q가 없으면(q!) 호출 (조건)
+    return; 
+}
 document.getElementById('searchKeywordDisplay').textContent = `"${query}"`; // 검색어 인식
 // 챔피온 데이터에서 이름, 영문명, 역할군, 라인 중 하나라도 검색어에 포함되면
 const champResults = CHAMPIONS.filter(c =>
@@ -112,3 +119,11 @@ document.getElementById('searchForm').addEventListener('submit', function(e) {
     const query = document.getElementById('searchInput').value;
     performSearch(query);
 });
+
+// ── 메인화면으로 돌아가기 ────────────────────────────────────────────
+function showMainScreen() {
+    document.querySelector('.hero').classList.remove('d-none');
+    document.querySelectorAll('section:not(#searchResults)').forEach(s => s.classList.remove('d-none'));
+    document.getElementById('searchResults').classList.add('d-none');
+    document.getElementById('searchInput').value = '';
+}

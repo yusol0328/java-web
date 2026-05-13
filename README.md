@@ -219,4 +219,65 @@
         - 3) download.html 수정
             - 동일한 버튼 추가
             - toggle.js 연결 추가
-        - <img src="screenshots/자바_9주차_5번(2).png" width="45%"> 
+        <img src="screenshots/자바_9주차_5번(2).png" width="45%"> 
+
+## 10주차 수업 내용 
+
+1. 데이터베이스 연동 
+    1) 프로젝트 내부 의존성 추가 (pom.xml 파일 수정)
+    2) 애플리케이션 db 설정 추가 (application.properties 파일 수정)
+    3) 프로젝트 dev 보드를 통한 dv 확인 
+    4) 데이터 저장을 위한 DB 내부 테이블 생성
+        - Champion.java 파일 생성
+        - DB 테이블과 Java 객체를 매핑하는 엔티티 클래스 작성
+    5) 웹 서버 접근 API 추가하기
+        - ChampionResource.java 파일 생성
+        - @Path, @GET 등 어노테이션으로 챔피언 데이터 조회 API 추가
+    6) 테이블 데이터 삽입하기 (DataSeeder.java 파일 작성)
+    7) 개발자 보드에서 DB 확인 
+    <img src="screenshots/자바_10주차_1번.png" width="45%"> 
+    8) VS CODE 확장 모듈을 통한 DB 확인
+        - localhost, id root 사용, 포트는 3306 사용 (필요하다면 3406으로 전환 예정)
+    <img src="screenshots/자바_10주차_1번(2).png" width="45%"> 
+
+    의존성 추가 -> DB 설정 -> 엔티티 -> API -> 데이터 삽입 -> 확인
+
+2. 로그인 기능 만들기
+    - 메인화면 네비바 -> 로그인 버튼 연결
+        1) index.html 수정 -> 네비바 로그인 링크 수정 
+        2) Quarkus /login 엔드포인트
+            - login/AuthResource.java 수정 
+            - 로그인 요청을 받고 로그인 html 페이지를 반환하기 위해 
+    - 로그인 페이지 작성 
+        1) 기존 html 폼을 유지하는 선에서 별도의 로그인 폼을 붙여넣음 (아이디/패스워드 폼 전송)
+        <img src="screenshots/자바_10주차_2번.png" width="45%"> 
+        2) Quarkus /login_check 엔드포인트
+            - AuthResource.java에 추가한다. DB체크 전 로그인 경로가 잡혀 있는지 임시 로그인으로 확인 
+    - 로그인 후 페이지 (로그아웃 버튼)
+        - login 폴더에 main_after_login.html 을 추가 
+        - 기존 index.html 폼을 재활용하나, 기존 로그인 버튼을 제거하고 로그아웃 버튼을 추가한다. 
+        <img src="screenshots/자바_10주차_2번(2).png" width="45%"> 
+
+        링크 -> 엔드포인트 -> 폼 -> 체크 -> 로그인 후 페이지
+
+3. 데이터베이스 
+    1) 사용자 테이블 생성
+        - User.java 를 작성한다. (엔티티 작성)
+        - username, password는 String 타입. 
+    2) 임시 사용자 데이터 삽입 
+        - DataSeeder.java에 추가한다. (guest 계정)
+        -mysql 접속 후 lol db 확인, user 확인이 가능하다. 
+        <img src="screenshots/자바_10주차_3번.png" width="45%">
+
+4. 과제 
+    - 로그인 페이지의 다크/라이트 모드 구현 
+        - login.html과 main_after_login.html을 수정
+        - 버튼에서 onclick 제거 (인라인 -> 리스너 방식 통일)
+    <img src="screenshots/자바_10주차_4번.png" width="45%"> 
+    <img src="screenshots/자바_10주차_4번(2).png" width="45%"> 
+
+
+## 11주차 수업 내용 
+
+3) 로그인 사용자 DB 체크 -> 인증 처리
+4) 로그아웃 -> 메인 페이지 이동 

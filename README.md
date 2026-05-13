@@ -275,9 +275,7 @@
         - 버튼에서 onclick 제거 (인라인 -> 리스너 방식 통일)
     <img src="screenshots/자바_10주차_4번.png" width="45%"> 
     <img src="screenshots/자바_10주차_4번(2).png" width="45%"> 
-
-
-## 11주차 수업 내용 
-
-3) 로그인 사용자 DB 체크 -> 인증 처리
-4) 로그아웃 -> 메인 페이지 이동 
+    - 다운로드 페이지의 다크/라이트 모드 구현 
+        - lndex.html의 main.css를 download.css에 덧씌움 
+        - 이후 가독성이 좋지 않은 부분들을 별개로 download.css에서 세부 조정 
+    <img src="screenshots/자바_10주차_4번(3).png" width="45%"> 

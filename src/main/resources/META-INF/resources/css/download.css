@@ -63,3 +63,29 @@ body {
 .accent-purple { 
     color: #a020f0; 
 }
+
+/* 10주차 과제 - 다운로드 페이지 라이트 모드 변경 */
+/* 라이트모드, 뒷배경 잘 보이게 */
+body.light-mode .hero {
+    background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.6)),
+        url('../images/download-banner.png') center/cover no-repeat !important;
+}
+
+/* 라이트모드, 다운로드 버튼 잘 보이게 */
+body.light-mode .btn-outline-light {
+    color: #212529 !important;
+    border-color: #212529 !important;
+}
+
+body.light-mode .btn-outline-light:hover {
+    background-color: #212529 !important;
+    color: #fff !important;
+}
+
+/* 라이트모드, "게임 다운로드" 색상 변경 */
+body.light-mode .hero h1 {
+    color: #5a189a;
+    /* 어두운 보라로 변경 */
+    text-shadow: 0 0 10px #ffffff;
+    /* 기존 보라 그림자->하얀 그림자 */
+}

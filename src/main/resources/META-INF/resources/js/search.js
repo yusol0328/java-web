@@ -34,16 +34,16 @@
 
 // ── 챔피언 데이터 ──────────────────────────────────────────────
 const CHAMPIONS = [
-{ name: '아트록스', engName: 'Aatrox', role: '전사', lane: '탑', img: 'images/Aatrox.png', difficulty: '상' },
-{ name: '사일러스', engName: 'Sylas', role: '마법사', lane: '정글/미드', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Sylas.png', difficulty: '중' },
-{ name: '애니비아', engName: 'Anivia', role: '마법사', lane: '미드', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Anivia.png', difficulty: '상' },
-{ name: '브라이어', engName: 'Briar', role: '전사', lane: '정글', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Briar.png', difficulty: '중' },
-{ name: '잭스', engName: 'Jax', role: '전사', lane: '탑', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Jax.png', difficulty: '하' },
-{ name: '징크스', engName: 'Jinx', role: '원거리딜러', lane: '원딜', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Jinx.png', difficulty: '중' },
+    { name: '아트록스', engName: 'Aatrox', role: '전사', lane: '탑', img: 'images/Aatrox.png', difficulty: '상', modalId: 'modalAatrox' },
+{ name: '사일러스', engName: 'Sylas', role: '마법사', lane: '정글/미드', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Sylas.png', difficulty: '중', modalId: 'modalSylas' },
+{ name: '애니비아', engName: 'Anivia', role: '마법사', lane: '미드', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Anivia.png', difficulty: '상', modalId: 'modalAnivia' },
+{ name: '브라이어', engName: 'Briar', role: '전사', lane: '정글', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Briar.png', difficulty: '중', modalId: 'modalBriar' },
+{ name: '잭스', engName: 'Jax', role: '전사', lane: '탑', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Jax.png', difficulty: '하', modalId: 'modalJax' },
+{ name: '징크스', engName: 'Jinx', role: '원거리딜러', lane: '원딜', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Jinx.png', difficulty: '중', modalId: 'modalJinx' },
 
-{ name: '티모', engName: 'Teemo', role: '암살자', lane: '탑', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Teemo.png', difficulty: '하' },
-{ name: '야스오', engName: 'Yasuo', role: '전사', lane: '미드', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Yasuo.png', difficulty: '상' },
-{ name: '렉사이', engName: "Rek'Sai", role: '전사', lane: '정글', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/RekSai.png', difficulty: '중' },
+{ name: '티모', engName: 'Teemo', role: '암살자', lane: '탑', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Teemo.png', difficulty: '하', modalId: 'modalTeemo' },
+{ name: '야스오', engName: 'Yasuo', role: '전사', lane: '미드', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Yasuo.png', difficulty: '상', modalId: 'modalYasuo' },
+{ name: '렉사이', engName: "Rek'Sai", role: '전사', lane: '정글', img: 'https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/RekSai.png', difficulty: '중', modalId: 'modalRekSai' },
 ];
 
 // ── 뉴스 데이터 ──────────────────────────────────────────────
@@ -76,7 +76,7 @@ if (champResults.length === 0) {
 champList.innerHTML = `<div class="no-result"><h4>검색 결과 없음</h4><p>"${query}"에 해당하는 챔피언이 없습니다.</p></div>`;
 } else {
 champList.innerHTML = champResults.map(c => `
-<div class="search-result-card d-flex align-items-center p-0 overflow-hidden">
+<div class="search-result-card d-flex align-items-center p-0 overflow-hidden"data-bs-toggle="modal" data-bs-target="#${c.modalId}">
 <img src="${c.img}" alt="${c.name}">
 <div class="p-3">
 <div style="font-weight:700; font-size:1rem; color:#111;">${c.name} <span style="color:#888; font-size:0.85rem;">(${c.engName})</span></div>

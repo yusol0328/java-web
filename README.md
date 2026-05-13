@@ -2,8 +2,8 @@
 매 주 수업 내용을 정리하자.
 
 ## 2, 3주차 수업 내용
-실습 1 : 쿼크스 환경 구축 및 준비 완료!
-실습 2 : HTML 기본 및 LOL 메인 화면 개발 완료!
+실습 1 : 쿼크스 환경 구축 및 준비 완료
+실습 2 : HTML 기본 및 LOL 메인 화면 개발 완료
 <div align="center">
 <img src="screenshots/2026-01-26 오전 9_51_43.png" width="45%" alt="실습 1 화면">
 <img src="screenshots/파일명.png" width="45%" alt="실습 2 화면">
@@ -148,3 +148,75 @@
         - search.js의 챔피언 데이터 배열에 챔피언 추가
     <img src="screenshots/자바_7주차_3번(2).png" width="45%">
     - 검색어 기능 추가 : showMainScreen()함수 추가, 조건에 맞추어 기능 구현 
+
+
+## 8주차 수업 내용 - 중간고사 
+
+
+## 9주차 수업 내용
+
+1. 자바스크립트 자료 구조 파악하기
+    1) 일반 배열 및 객체 배열 
+        - 객체 배열 : 키(key)를 통해 데이터의 의미를 즉시 파악 
+            - 추천 상황 : 데이터베이스 검색 결과, 사용자 목록, 게시판 글 리스트 등
+        - 일반 배열 : 불분명함. 인덱스(순서)가 무엇을 의미하는지 미리 약속해야 함. 
+            - 추천 상황 : 단순 선택지 목록, 태그 리스트, 점수 목록, 좌표 값 등 
+    2) test2.js 파일을 통한 배열 학습 테스트
+        - F12모드를 통한 콘솔 확인
+        <img src="screenshots/자바_9주차_1번.png" width="45%">
+2. 자바스크립트 기능 (다크<->라이트 모드 전환)
+    1) index.html 수정 (HTML 역할 - 구조, 뼈대)
+        - 네비바 기존 코드 수정
+        - `<img>` 로고 배치
+        - `<button>` 토글 버튼 
+        - `onclick="toggleTheme()"` 로 js 함수 연결 
+        - `<script src>` 태그로 js 파일 불러옴 
+    2) main.css 수정 (CSS 역할 - 디자인, 스타일)
+        - 토글 버튼 디자인 설정
+        - `.light-mode` 정의
+        - navbar card 색상 
+        - !important 강제 적용 
+    3) toggle.js 파일 추가 (동작, 로직)
+        - toggleTheme() 함수 
+        - `body.classList.toggle('light-mode')`핵심
+        - CSS 일괄 전환 유발 
+    4) 종합 : index.html에 main.css와 toggle.js를 연동 
+    <img src="screenshots/자바_9주차_2번.png" width="45%">
+3. 자바 소스코드 살펴보기 
+    - java/org/acme 폴더 이용 
+    - 어노테이션 3개가 각각 다른 계층에서 역할을 나눠 갖는 구조
+    - 어노테이션 3개가 조합되어 하나의 엔드포인트 완성  
+        - @Path : 클래스 레벨, 경로 등록 (URL 경로를 클래스에 매핑, ex. @Path("/hello")면 `http://localhost:8080/hello`, 기본 경로는 /hello로 공유되는 것) 
+        - @GET : 메서드 레벨, HTTP GET 메서드 구분
+        - @Produces : 응답 형식 Content-Type 지정 (ex. text/plain) 
+    - 자바 vs 자바스크립트, 둘은 명확한 차이가 있다 
+        - Java : 엄격하고 명시적
+        - JavaScript : 유연하고 동적 
+    - quarkus 내부 동작과정 
+        - 진입점은 빌드 타임에 자동 생성
+        - QuarkusMain.main() -> ArC(CDI 컨테이너)
+        - 매핑 및 설정 로드 후 서버 실행
+4. 데이터베이스 연동 
+    - MYSQL 설치 및 연동
+    - DB 및 테이블 추가
+    - 챔피온 정보 불러오기 
+    <img src="screenshots/자바_9주차_4번.png" width="45%">
+5. 과제 
+    1) 챔피온 검색 결과 모달창 띄우기
+        - modalId 속성
+        - search.js 수정 
+            - 1) modal 아이디를 객체 배열에 추가 
+            - 2) `data-bs-toggle="modal"`, `data-bs-target` 속성&클릭 이벤트 추가 
+        - HTML 수정 
+            - modal을 section 밖으로 꺼냄 
+        - 현재는 아트록스의 모달창만 기능 중이나, 향후 주차에서 모달창을 추가해 갈 예정 
+        <img src="screenshots/자바_9주차_5번.png" width="45%">
+    2) 자바스크립트 호출 방식 변경하기 
+        - 기존 토글 함수를 인라인 → 리스너 방식으로 변경
+        - 모든 페이지에 동일 적용 
+        - 1) toggle.js 수정 : 파일 안에 리스너 추가 
+        - 2) index.html 수정 : 파일에서 onclick 제거
+        - 3) download.html 수정
+            - 동일한 버튼 추가
+            - toggle.js 연결 추가
+        - <img src="screenshots/자바_9주차_5번(2).png" width="45%"> 

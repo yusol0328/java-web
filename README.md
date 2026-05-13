@@ -279,3 +279,80 @@
         - lndex.html의 main.css를 download.css에 덧씌움 
         - 이후 가독성이 좋지 않은 부분들을 별개로 download.css에서 세부 조정 
     <img src="screenshots/자바_10주차_4번(3).png" width="45%"> 
+
+
+## 11주차 수업 내용 
+1. 로그인과 로그아웃 
+    - 세션 활성화 설정 추가
+        - Login 폴더에 SessionConfig.java 를 작성 
+        - @inject -> 컨테이너가 Session 객체를 자동으로 주입
+        - @Observes -> 애플리케이션 시작 이벤트를 감지해서 세션 설정 초기화  
+    - 로그인 사용자 DB 체크 -> 인증 처리
+        - /login_check를 완성한다
+        - AuthResource.java를 수정한다 (DB조회로 인증 처리)
+        - 동작 흐름
+            1) username, password POST로 전송받음
+            2) DB에서 username 조회
+            3) password 일치 여부 확인
+            4) 일치 → 세션에 로그인 정보 저장 → /after_login 이동 
+               불일치 → 로그인 페이지로 다시 이동
+    - 로그인 후 페이지 (세션 체크 필수)
+        - /after_login 을 작성한다
+        - AuthResource.java에 추가한다 
+            - 세션이 있을 시 -> 로그인 후 HTML 반환
+            - 세션이 없을 시 -> 로그인 페이지로 강제 이동 
+        - 로그인 이후 세션 쿠키 확인하기
+        <img src="screenshots/자바_11주차_1번.png" width="45%">
+    -  /logout 로그아웃 엔드포인트 
+        - 세션 초기화(로그아웃) 후 메인 페이지 이동
+            - 서버의 login 사용자의 세션 데이터는 연결 해제됨
+            - session.invalidate() 호출 -> 서버 세션 삭제 -> 메인 페이지 redirect
+        <img src="screenshots/자바_10주차_1번(2).png.png" width="45%">
+
+    설정 -> 인증 -> 세션체크 -> 로그아웃
+
+2. 회원가입 기능 추가
+    - 회원가입 버튼 추가 
+        - login 폴더의 login.html을 수정 
+        - 기존 로그인 버튼 아래에 자리할 수 있게끔 조정 
+        <img src="screenshots/자바_11주차_2번.png" width="45%">
+        - 회원 등록 /register 요청 (엔드포인트 등록 필요)
+        - register 엔드포인트 등록 
+            - loging 폴더의 AuthResource.java를 수정
+            - dev-ui내의 엔드포인트 목록 확인
+        <img src="screenshots/자바_11주차_2번(2).png" width="45%">
+    - 회원가입 폼 작성
+        - 회원가입 화면 작성하기 
+            - login 폴더의 register.html을 수정한다. (기존 login.html 디자인 재활용)
+            - 아이디, 패스워드, 패스워드 확인, 이메일, 연락처 화면 나오도록 
+        <img src="screenshots/자바_11주차_2번(3).png" width="45%">
+    - 회원 테이블 수정하기 
+        - User.java를 수정한다. 컬럼을 추가한다. 
+        - 이메일 중복 방지, 아이디로 조회, 이메일로 조회 할 수 있도록 
+        <img src="screenshots/자바_11주차_2번(4).png.png" width="45%">
+    - 입력값 유효성 검사(JS) -> 중복 아이디, 이메일 등
+        - Js폴더에 input_check.js를 작성한다.
+        -  동작 흐름
+            1) 아이디 : 4~20자 영문 숫자
+            2) 패스워드 : 8자 이상, 영문+숫자+특수문자
+            3) 패스워드 일치 여부 확인
+            4) 이메일 형식 확인
+            5) 연락처 형식 확인 
+            6) 전체 통과 시 확인 모달 출력 
+        <img src="screenshots/자바_11주차_2번(5).png" width="45%">
+        
+
+3. 암호화
+    - SHA-256 해시, 모달창
+        - JS폴더에  input_sha256.js을 작성
+
+4. 과제 
+    - 로그인 화면 입력값 체크 (회원가입과 같은 방식으로 유효성 검사를 진행할 수 있게끔 한다.)
+        1) 회원가입 화면의 입력값 체크 
+        2) Js폴더에 login.js를 생성하고 작성한다.  
+            - 기존 input_check.js를 참고하여 재활용 
+            - username을 usernameInput으로, password를 passwordInput으로 바꾸어 입력. 
+            - 파라미터 개수를 맞추어 입력과 출력이 동일하도록 조정
+        3) Login 폴더에 login.html도 수정한다. 
+            - id로 usernameInput과 passwordInput을 추가. 
+        <img src="screenshots/자바_11주차_4번.png" width="45%">

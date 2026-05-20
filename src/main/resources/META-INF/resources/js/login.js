@@ -38,3 +38,10 @@ function clearError(fieldId) {
 function submitLogin() {
     document.querySelector('form[action="/login_check"]').submit();
 }
+
+async function submitLogin() {
+    const password = document.getElementById('passwordInput').value;
+    const hashed = await hashPassword(password);
+    document.getElementById('password').value = hashed;
+    document.getElementById('loginForm').submit();
+}

@@ -19,10 +19,27 @@ public class AuthResource {
     @Path("/login") // 경로 명시
     @Produces(MediaType.TEXT_HTML) // 서버 → 클라
     public Response loginPage() {
-        InputStream html = getClass()
-                .getClassLoader()
-                .getResourceAsStream("META-INF/resources/login/login.html");
-        return Response.ok(html).build();
+
+            // 1. 세션 확인
+            String loginUser = context.session().get("loginUser");
+
+            // 2. 이미 로그인된 상태면 → after_login으로 리다이렉트
+            if (loginUser != null) {
+                    return Response
+                        .seeOther(URI.create("/after_login"))
+                        .build();
+            }
+
+            // 3. 로그인 안 된 상태면 → 기존대로 로그인 페이지 반환
+            InputStream html = getClass()
+                            .getClassLoader()
+                            .getResourceAsStream("META-INF/resources/login/login.html");
+            return Response.ok(html).build();
+
+        // InputStream html = getClass()
+        //         .getClassLoader()
+        //         .getResourceAsStream("META-INF/resources/login/login.html");
+        // return Response.ok(html).build();
     }
 
     @POST // 아이디, 패스워드 전송받음

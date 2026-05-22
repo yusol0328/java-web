@@ -356,3 +356,46 @@
         3) Login 폴더에 login.html도 수정한다. 
             - id로 usernameInput과 passwordInput을 추가. 
         <img src="screenshots/자바_11주차_4번.png" width="45%">
+
+
+## 12주차 수업 내용
+1. 암호화
+    - 해시를 생성해 가입 확인 모달을 출력하게끔 함 
+        1) input_sha256.js를 작성 
+            - 패스워드 해시 암호화 후 확인 모달 출력 
+        2) register.html에 추가 작성 
+            - 가입 확인 모달이 출력되게끔 함 (박스가 띄워지도록)
+        <img src="screenshots/자바_12주차_1번.png" width="45%">
+        3) 엔드포인트 
+            - /register_check 엔드포인트 
+            - AuthResource.java의 하단에 추가 작성
+            - 아이디와 이메일을 중복 체크한 후 가입 완료 페이지로 이동할 수 있게끔 한다. 
+            - 가입 완료 페이지로 연결된다. 
+            - register_success.html도 작성, 기존 디자인 활용 
+         <img src="screenshots/자바_12주차_1번(2).png" width="45%">
+         <img src="screenshots/자바_12주차_1번(3).png" width="45%">
+            - dev.ui에서 유저 정보를 확인할 수 있다. 
+2. 로그인 - 암호화 체크 
+    1) 로그인 페이지의 암호화 구현
+        - login.js를 추가 및 수정
+        - 정규식 검사 함수는 유지 
+        - 로그인 시 비밀번호를 SHA-256으로 해시해서 서버에 전송하기 위한 코드
+        - 네트워크로 평문 비밀번호가 아닌 해시값이 전달되도록 
+        <img src="screenshots/자바_12주차_2번.png" width="45%">
+    2) guest 계정 패스워드 - 해시값으로 교체
+        - 기존 123123이 아닌 다른 비밀번호로 해시값 생성
+        - 교체 후 mysql에서 패스워드를 업데이트 
+        <img src="screenshots/자바_12주차_2번(2).png" width="45%">
+3. 세션 체크 
+    - 로그인을 정상적으로 했고, 서버에서 세션도 정상 생성되었으나 메인화면으로 이동하면 로그아웃이 아닌 로그인 버튼이 표시되는 오류가 생김
+    - 화면(프론트엔드)가 로그인 상태를 알 수 있도록 확인하는 '세션 체크'코드를 삽입 및 구현
+    - AuthResource.java를 수정
+        - 파일명을 Index.html → main_index.html로 변경
+4. 프로필 페이지 
+    - 네비바에 프로필 링크 추가 (main_after_login.html을 수정)
+    <img src="screenshots/자바_12주차_4번.png" width="45%">
+5. 과제
+    - 세션 체크 없이 무조건적으로 로그인 html을 반환하는 AuthRessource.jaca의 loginPage()메서드를 수정 
+    - 세션 체크 후 로그인 된 상태라면 after_login으로, 로그인이 되지 않은 상태라면 기존대로 로그인 페이지를 반환하도록 
+    - 로그인된 사용자가 /login에 접근하면 차단, /after_login으로 보내기 
+    - 중복 로그인, 세션 덮어쓰기 문제 해결 

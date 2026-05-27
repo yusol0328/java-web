@@ -13,7 +13,7 @@
 
     <script>
         window.onload = function () {
-            alert("메인 페이지 로딩 완료");
+            showToast('로그인 페이지 로딩 완료');
         }
     </script>
 
@@ -101,7 +101,7 @@
         </div>
     </nav>
     <!-- 네비바 → index.html과 동일하게 복사 -->
-    <!– 기존 index.html 디자인을 재활용한다. -->
+    <!-- 기존 index.html 디자인을 재활용한다. -->
         <section class="hero d-flex align-items-center
 justify-content-center text-center py-5">
             <div class="container" style="max-width: 400px;">
@@ -129,6 +129,20 @@ justify-content-center text-center py-5">
                 </form>
             </div>
         </section>
+
+        <!-- 토스트 컨테이너 </body> 바로 위에 추가 -->
+            <div class="toast-container position-fixed
+        bottom-0 end-0 p-3" style="z-index:9999">
+                <div id="liveToast" class="toast align-items-center
+        text-white bg-success border-0" role="alert">
+                    <div class="d-flex">
+                        <div class="toast-body" id="toastBody">
+                            메시지
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                    </div>
+                </div>
+            </div>
 
         <!-- 검색 자바스크립트  -->
         <script src="../js/search.js"></script>

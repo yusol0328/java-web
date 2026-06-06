@@ -469,6 +469,7 @@
     3) AuthResource.java 수정
         - 수정 : "/login?error=1"을 "/login/?error=1"로
         - 결과 : URL이 localhost:8080/login/?error=1로 정상 유지되고 에러 메시지 표시 성공
+     <img src="screenshots/자바_추가 마무리 문제_로그인 에러 처리.png" width="45%">
 2) 프로필 파일 업로드 에러
     1) profile.html - 업로드 폼 위에 에러 메시지 div 추가
         - 오류 메시지 출력 영역
@@ -478,3 +479,4 @@
             - 잘못된 파일 형식 : 'invalid_type'
             - 파일 크기 초과 : 'too_large'
             - 업로드 실패 : 'upload_fail'
+     <img src="screenshots/자바_추가 마무리 문제_업로드 에러 처리.png" width="45%">

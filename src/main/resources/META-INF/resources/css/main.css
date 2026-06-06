@@ -97,3 +97,11 @@ body { background-color: #0a0e17; color: #fff; font-family: 'Arial', sans-serif;
     body.light-mode .card { background-color: #ffffff; color: #212529; border: 1px solid #dee2e6; }
     body.light-mode .card-title { color: #212529; }
     body.light-mode .card-text { color: #555; }
+
+
+/* 다크모드 기본 카드 스타일 */
+.card {
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+    color: #ffffff;
+}

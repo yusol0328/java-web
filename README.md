@@ -454,4 +454,27 @@
 
     - Toast도,  Bootstrap Tooltip도 조건에 따라 다르게 반응하는 동적 반응 UI 
 
-   
+## 추가 - 12주차 강의자료 문제 추가 해결
+1. 로그인 에러 문구
+    1) login.js 하단에 에러 처리 코드 추가
+        - 페이지 로드 완료 후 실행될 수 있게
+        - URL에서 쿼리스트링 파싱 
+            ex. 예: /login/?error=1 → params.get('error') === '1'
+        - error=1이면 에러 메시지 표시
+            ex. '아이디 또는 패스워드가 올바르지 않습니다.'
+    2) 원인 분석 (Network 탭 확인)
+        -  로그인 실패 후 URL이 ?error=1로 바뀌지 않는 것을 확인
+        - login?error=1 -> 301, 쿼리스트링 손실 원인
+        - Quarkus가 /login?error=1을 /login/으로 301 리다이렉트하면서 ?error=1이 날아가는 것이 원인
+    3) AuthResource.java 수정
+        - 수정 : "/login?error=1"을 "/login/?error=1"로
+        - 결과 : URL이 localhost:8080/login/?error=1로 정상 유지되고 에러 메시지 표시 성공
+2) 프로필 파일 업로드 에러
+    1) profile.html - 업로드 폼 위에 에러 메시지 div 추가
+        - 오류 메시지 출력 영역
+    2) profile.js - window.onload 안에 에러 감지 코드 추가
+        - 파일 업로드 -> 서버(AuthResource.java)에서 검증 -> 실패시 /profile/?error=invalid_type 으로 리다이렉트 -> profile.js의 window.onload 실행 -> URL에서 error 파라미터 읽기 -> 해당 div의 d-none 제거 + 메시지 표시
+        - error 값 종류
+            - 잘못된 파일 형식 : 'invalid_type'
+            - 파일 크기 초과 : 'too_large'
+            - 업로드 실패 : 'upload_fail'

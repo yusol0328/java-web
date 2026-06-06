@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사일러스 상세</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0a0e17;
+      color: white;
+      padding: 1.5rem;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    h3, h4 {
+      color: #c8aa6e;
+    }
+    .text-muted {
+      color: #a0a0a0 !important;
+    }
+    .list-group-item {
+      background: transparent;
+      border-color: #444;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container-fluid">
+    <div class="row g-4">
+      
+      <!-- 왼쪽: 이미지 + 기본 정보 -->
+      <div class="col-lg-5 text-center">
+        <img src="../images/Sylas.png"
+             class="img-fluid rounded shadow-lg" alt="사일러스"
+             style="max-height: 480px; object-fit: cover; object-position: top;">
+        <div class="mt-3">
+          <h3 class="mb-1">사일러스 (Sylas)</h3>
+          <p class="text-muted fs-5">마법사 / 난이도: 중</p>
+        </div>
+      </div>
+      
+      <!-- 오른쪽: 스킬 + 스토리 -->
+      <div class="col-lg-7">
+        <h4 class="border-bottom border-secondary pb-2 mb-3">스킬</h4>
+        <ul class="list-group list-group-flush mb-4">
+          <li class="list-group-item">패시브: 페틸 강탈</li>
+          <li class="list-group-item">Q: 사슬 채찍</li>
+          <li class="list-group-item">W: 쇄도하는 물결 / 치유의 손길</li>
+          <li class="list-group-item">E: 도주</li>
+          <li class="list-group-item">R: 찬탈</li>
+        </ul>
+
+        <h4 class="border-bottom border-secondary pb-2 mb-3">배경 스토리 요약</h4>
+        <p class="text-secondary lh-lg">
+          데마시아의 마법 박해 속에서 어린 시절부터 감금된 사일러스는, 
+          마법사들을 억압하는 왕국에 깊은 증오를 품게 되었다. 
+          타인의 마법을 훔쳐 자신의 힘으로 삼는 능력을 가진 그는, 
+          마침내 감옥을 탈출하고 마법사 혁명의 불꽃을 일으킨다. 
+          자유와 복수를 향한 그의 여정은 데마시아 전체를 뒤흔들고 있다.
+        </p>
+      </div>
+      
+    </div>
+  </div>
+
+</body>
+</html>

@@ -67,7 +67,7 @@ body {
 /* 10주차 과제 - 다운로드 페이지 라이트 모드 변경 */
 /* 라이트모드, 뒷배경 잘 보이게 */
 body.light-mode .hero {
-    background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.6)),
+    background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9)),
         url('../images/download-banner.png') center/cover no-repeat !important;
 }
 

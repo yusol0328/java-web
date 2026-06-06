@@ -1,7 +1,7 @@
 function validateAndLogin() {
     let valid = true;
     const username = document.getElementById('usernameInput').value.trim();
-    const password = document.getElementById('passwordInput').value;
+    const password = document.getElementById('passwordInput').value.trim();
 
     // ① 아이디 : 4~20자 영문/숫자
     const usernameRegex = /^[a-zA-Z0-9]{4,20}$/;
@@ -35,9 +35,9 @@ function clearError(fieldId) {
     field.classList.add('is-valid');
 }
 
-function submitLogin() {
-    document.querySelector('form[action="/login_check"]').submit();
-}
+// function submitLogin() {
+//     document.querySelector('form[action="/login_check"]').submit();
+// }
 
 async function submitLogin() {
     const password = document.getElementById('passwordInput').value;
@@ -45,3 +45,11 @@ async function submitLogin() {
     document.getElementById('password').value = hashed;
     document.getElementById('loginForm').submit();
 }
+
+window.addEventListener('load', function () {
+    const params = new URLSearchParams(window.location.search);
+    const error = params.get('error');
+    if (error === '1') {
+        showError('passwordInput', 'passwordMsg', '아이디 또는 패스워드가 올바르지 않습니다.');
+    }
+});

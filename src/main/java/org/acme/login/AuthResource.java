@@ -56,18 +56,22 @@ public class AuthResource {
                         @FormParam("password") String password) {
                 User user = User.findByUsername(username); // 아이디 조회
 
-                if (user == null || !user.password.equals(password)) { // 존재 확인
+                if (user == null || !user.password.equals(password)) {
+                        System.out.println("=== 로그인 실패");
                         return Response
-                                        .seeOther(URI.create("/login?error=1"))
+                                        .seeOther(URI.create("/login/?error=1"))
                                         .build();
                 }
 
+                System.out.println("=== 로그인 성공");
                 // 세션에 로그인 정보 저장
-                context.session().put("loginUser", username);
 
+                context.session().put("loginUser", username);
                 return Response
                                 .seeOther(URI.create("/after_login"))
                                 .build();
+
+                
         }
 
         @GET
@@ -252,13 +256,13 @@ public class AuthResource {
                                         original.lastIndexOf('.') + 1).toLowerCase();
                         if (!ext.matches("jpg|jpeg|png|gif|webp")) {
                                 return Response
-                                                .seeOther(URI.create("/profile?error=invalid_type"))
+                                                .seeOther(URI.create("/profile/?error=invalid_type"))
                                                 .build();
                         }
                         // ③ 파일 크기 검사 (5MB)
                         if (file.size() > 5 * 1024 * 1024) {
                                 return Response
-                                                .seeOther(URI.create("/profile?error=too_large"))
+                                                .seeOther(URI.create("/profile/?error=too_large"))
                                                 .build();
                         }
                         // ④ UUID 파일명 생성 + 저장
@@ -277,7 +281,7 @@ public class AuthResource {
                                         .build();
                 } catch (Exception e) {
                         return Response
-                                        .seeOther(URI.create("/profile?error=upload_fail"))
+                                        .seeOther(URI.create("/profile/?error=upload_fail"))
                                         .build();
                 }
         }

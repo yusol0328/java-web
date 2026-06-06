@@ -12,9 +12,9 @@
     <script src="../js/test2.js"></script>
 
     <script>
-        window.onload = function () {
+        window.addEventListener('load', function() {
             showToast('로그인 성공!');
-        }
+        });
     </script>
 
     <!-- 기존 코드 자리에 연동한 css -->
@@ -58,7 +58,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">메인화면</a>
+                        <a class="nav-link active" aria-current="page" href="http://localhost:8080/">메인화면</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://www.leagueoflegends.com/ko-kr/news/">뉴스</a>
@@ -91,11 +91,11 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="https://www.leagueoflegends.com/ko-kr/"
                                     target="_blank">롤공식홈</a></li>
-                            <li><a class="dropdown-item" href="#">롤전적</a></li>
+                            <li><a class="dropdown-item" href="https://www.deeplol.gg/aram?hl=ko">롤전적</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">간편유튜브</a></li>
+                            <li><a class="dropdown-item" href="https://www.youtube.com/@LeagueofLegends-Korea">간편유튜브</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -147,49 +147,14 @@
                         <p class="card-text small">역할: 전사 / 난이도: 상</p>
                     </div>
                     <div class="card-footer bg-transparent border-0">
-                        <button class="btn btn-outline-light w-100" data-bs-toggle="modal" data-bs-target="#modalAatrox"
+                        <button class="btn btn-outline-secondary w-100" data-bs-toggle="modal" data-bs-target="#modalAatrox"
                             data-champ="Aatrox">
                             상세 보기
                         </button>
                     </div>
                 </div>
             </div>
-            <!-- 모달 (iframe으로 Aatrox.html 불러오기) -->
-            <div class="modal fade" id="modalAatrox" tabindex="-1" aria-labelledby="modalAatroxLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content bg-dark text-white border-secondary">
-                        <!-- 헤더 -->
-                        <div class="modal-header border-secondary">
-                            <h5 class="modal-title" id="modalAatroxLabel">아트록스 (Aatrox) 상세 정보</h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>
-                        <!-- 바디: iframe으로 내용 채움 -->
-                        <div class="modal-body p-0" style="height: 65vh; background: #0a0e17;">
-                            <iframe src="modals/Aatrox.html" frameborder="0"
-                                style="width: 100%; height: 100%; border: none;" allowfullscreen>
-                            </iframe>
-                        </div>
-                        <!-- 푸터 -->
-                        <div class="modal-footer border-secondary">
-                            <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- <div class="col-md-6 col-lg-4 col-xl-2">
-                <div class="card text-center h-100">
-                    <img src="https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion/Aatrox.png" class="card-img-top" alt="Aatrox" loading="lazy">
-                    <div class="card-body">
-                        <h5 class="card-title accent-red">Aatrox (탑)</h5>
-                        <p class="card-text">어둠의 검으로 적을 베세요.</p>
-                    </div>
-                </div>
-            </div> -->
-
+    
             <!-- Sylas -->
             <div class="col-md-6 col-lg-4 col-xl-2">
                 <div class="card text-center h-100">
@@ -273,7 +238,7 @@
                         class="card-img-top" alt="Rek'Sai" loading="lazy">
                     <div class="card-body">
                         <h5 class="card-title accent-purple">Rek'Sai (정글)</h5>
-                        <p class="card-text">땅속에서 솟구쳐 적을 산 채로 집어삼키세요!"</p>
+                        <p class="card-text">땅속에서 솟구쳐 적을 산 채로 집어삼키세요!</p>
                     </div>
                 </div>
             </div>
@@ -304,6 +269,20 @@
             </div>
         </div>
     </section>
+
+    <!-- 토스트 컨테이너 -->
+    <div class="toast-container position-fixed
+        bottom-0 end-0 p-3" style="z-index:9999">
+        <div id="liveToast" class="toast align-items-center
+        text-white bg-success border-0" role="alert">
+            <div class="d-flex">
+                <div class="toast-body" id="toastBody">
+                    메시지
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    </div>
 
     <!-- ===== 검색 결과 섹션 (기본 숨김) ===== -->
     <section id="searchResults">
@@ -346,16 +325,26 @@
         </div>
     </section>
 
-    <!-- 토스트 컨테이너 -->
-    <div class="toast-container position-fixed
-    bottom-0 end-0 p-3" style="z-index:9999">
-        <div id="liveToast" class="toast align-items-center
-    text-white bg-success border-0" role="alert">
-            <div class="d-flex">
-                <div class="toast-body" id="toastBody">
-                    메시지
+    <!-- 모달 (iframe으로 Aatrox.html 불러오기) -->
+    <div class="modal fade" id="modalAatrox" tabindex="-1" aria-labelledby="modalAatroxLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content bg-dark text-white border-secondary">
+                <!-- 헤더 -->
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title" id="modalAatroxLabel">아트록스 (Aatrox) 상세 정보</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                <!-- 바디: iframe으로 내용 채움 -->
+                <div class="modal-body p-0" style="height: 65vh; background: #0a0e17;">
+                    <iframe src="modals/Aatrox.html" frameborder="0" style="width: 100%; height: 100%; border: none;"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <!-- 푸터 -->
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">닫기</button>
+                </div>
             </div>
         </div>
     </div>
@@ -364,6 +353,8 @@
     <script src="../js/search.js"></script>
     <!-- 토글 자바스크립트 -->
     <script src="../js/toggle.js"></script>
+    <!-- 프로필 자바스크립트 -->
+    <script src="../js/Profile.js"></script>
 
 
 </body>

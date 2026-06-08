@@ -445,8 +445,10 @@
             <img src="screenshots/자바_13주차_2번.png" width="45%">
             - 로그인 이후 페이지
             <img src="screenshots/자바_13주차_2번(2).png" width="45%">
-            - 회원가입 이후 페이지
+            - 회원가입 이후 페이지 로딩
             <img src="screenshots/자바_13주차_2번(3).png" width="45%">
+            - 회원가입 완료 알림
+            <img src="screenshots/자바_13주차_2번(3_1).png" width="45%">
     2) 네비바 로그인 사용자명 표시 
         - 네비바의 '프로필' 버튼에 마우스 커서를 가져갔을 때, 'username'이  Bootstrap Tooltip  형식으로 뜰 수 있게끔 함 
         - 회원 정보를 읽고, JSON 형태 변환 후 화면을 갱신시킴 
@@ -480,3 +482,43 @@
             - 파일 크기 초과 : 'too_large'
             - 업로드 실패 : 'upload_fail'
      <img src="screenshots/자바_추가 마무리 문제_업로드 에러 처리.png" width="45%">
+
+## 14주차 수업 내용
+1) 회원정보 수정
+    - 목표: 프로필 페이지에서 이메일, 연락처를 수정할 수 있게 한다.
+    - 구현 내용
+        - `profile.html` 수정
+            - 개인정보 수정 버튼(collapse 토글) 추가
+            - 이메일, 연락처 입력 폼 추가 (`id="updateForm"`, `action="/profile/update"`)
+            - 수정 결과 메시지 div 추가 (`id="updateMsg"`)
+        - `AuthResource.java` 수정
+            - `/profile/update` POST 엔드포인트 추가
+            - 세션 체크 -> 이메일 중복 체크(본인 제외) -> DB 업데이트
+            - 성공 시 `/profile?success=updated`, 실패 시 `/profile?error=duplicate_email` 리다이렉트
+        - `Profile.js` 수정
+            - 수정 폼에 기존 값 자동 채우기 (`updateEmail`, `updatePhone`)
+            - `validateAndUpdate()` 함수 추가 (이메일/연락처 정규식 검사)
+            - URL 파라미터로 성공/실패 메시지 표시
+            - `history.replaceState`로 메시지 표시 후 URL 정리
+2) 비밀번호 변경
+    - 목표 : 프로필 페이지에서 현재 비밀번호 확인 후 새 비밀번호로 변경할 수 있게 한다.
+    - 구현 내용 
+        - `profile.html` 수정
+            - 비밀번호 변경 폼 추가 (`id="pwForm"`, `action="/profile/password"`)
+            - 현재 비밀번호, 새 비밀번호, 새 비밀번호 확인 입력 필드
+            - 해시값 전송용 hidden input 추가 (`currentPassword`, `newPassword`)
+            - Toast 컨테이너 추가
+            - `input_sha256.js` 연결 추가
+        - `AuthResource.java` 수정
+            - `/profile/password` POST 엔드포인트 추가
+            - 세션 체크 → 현재 비밀번호 해시값 비교 → 새 비밀번호로 DB 업데이트
+            - 성공 시 `/profile?success=password_changed`, 실패 시 `/profile?error=wrong_password` 리다이렉트
+            - `/logout` 엔드포인트에 `@QueryParam("next")` 추가 → `?next=login`이면 `/login`으로 이동
+        - `Profile.js` 수정
+            - `validateAndChangePassword()` 함수 추가
+                - 현재 비밀번호 빈값 체크
+                - 새 비밀번호 정규식 검사
+                - 새 비밀번호 일치 여부 확인
+                - SHA-256 해시 생성 후 폼 전송
+            - `success=password_changed` 시 Toast 출력 후 3.5초 뒤 `/logout?next=login`으로 이동
+            - `error=wrong_password` 시 Toast + 에러 메시지 표시

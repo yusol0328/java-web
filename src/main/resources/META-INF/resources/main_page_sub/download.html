@@ -5,52 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>League of Legends - 메인 페이지</title>
-    <!-- Bootstrap 5 CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- 커스텀 스타일 (LOL 테마 + 챔피언 호버 효과) -->
-    <!-- <style>
-        body { background-color: #0a0e17; color: #fff; font-family: 'Arial', sans-serif; }
-        .navbar { background-color: #000; }
-        .hero { background: linear-gradient(to bottom, #1e1e1e, #0a0e17); min-height: 60vh; }
-        .accent-purple { color: #a020f0; }
-        .accent-red { color: #ff0000; }
-        .card { background-color: #1e1e1e; border: none; transition: transform 0.3s, box-shadow 0.3s; }
-        .card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(160, 32, 240, 0.5); }
-        .card-img-top { height: 200px; object-fit: cover; border-radius: 10px 10px 0 0; }
-        .btn-primary { background-color: #a020f0; border: none; }
-        .btn-primary:hover { background-color: #800080; } -->
-    </style>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/download.css">
 </head>
 
 <body>
 
-    <!-- 헤더 (Navbar) -->
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="http://localhost:8080/index.html">League of Legends</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="https://www.leagueoflegends.com/ko-kr/news/">뉴스</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://www.leagueoflegends.com/ko-kr/champions/">챔피언</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://www.leagueoflegends.com/ko-kr/download/">다운로드</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">로그인</a></li>
-                    <il class="nav-item"><a class="nav-link" href="https://www.leagueoflegends.com/ko-kr/" target="_blank">공식 웹사이트(외부 사이트 연결)</a></il>
-                </ul>
-            </div>
-        </div>
-    </nav> -->
     <!-- 새로운 네비게이션 바 (Navbar) -->
-    <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary"> -->
     <nav class="navbar navbar-expand-lg navbar-dark"> <!--검은색 네비바-->
         <div class="container-fluid">
             <a class="navbar-brand" href="#">네비바</a>
-            <!-- 9주차 자바스크립트 과제 - download.html 수정 - 똑같은 버튼 추가 (3) -->
+            <img src="../images/LOL.webp.png" alt="" width="30" height="24">
+            <!-- [변경] "Navbar" 텍스트 → 다크/라이트 토글 버튼 -->
             <button class="btn border-0" id="themeToggleBtn">DARK</button>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -60,7 +27,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="http://localhost:8080/">메인화면</a>
+                        <a class="nav-link active" aria-current="page" href="/">메인화면</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://www.leagueoflegends.com/ko-kr/news/">뉴스</a>
@@ -69,10 +36,10 @@
                         <a class="nav-link" href="https://www.leagueoflegends.com/ko-kr/champions/">챔피온</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="main_page_sub/download.html">다운로드</a>
+                        <a class="nav-link" href="/main_page_sub/download.html">다운로드</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">로그인</a>
+                        <a class="nav-link" href="/login">로그인</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -82,21 +49,16 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="https://www.leagueoflegends.com/ko-kr/"
                                     target="_blank">롤공식홈</a></li>
-                            <li><a class="dropdown-item" href="#">롤전적</a></li>
+                            <li><a class="dropdown-item" href="https://www.deeplol.gg/aram?hl=ko">롤전적</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">간편유튜브</a></li>
+                            <li><a class="dropdown-item" href="https://www.youtube.com/@LeagueofLegends-Korea">간편유튜브</a>
+                            </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                    </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <!-- 다운로드 페이지이므로 검색 폼 불필요하다 판단하여 삭제 -->
             </div>
         </div>
     </nav>
@@ -230,7 +192,10 @@
         </div>
     </section>
 
-    <!-- 9주차 자바스크립트 과제 - download.html 수정 - toggle.js 연결 (3) -->
+    <!-- 자바스크립트 연동 모음 -->
+    <!-- 부트스트랩 js -->
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <!-- 토글 js -->
     <script src="../js/toggle.js"></script>
 </body>
 

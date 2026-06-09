@@ -4,11 +4,6 @@
 ## 2, 3주차 수업 내용
 실습 1 : 쿼크스 환경 구축 및 준비 완료
 실습 2 : HTML 기본 및 LOL 메인 화면 개발 완료
-<div align="center">
-<img src="screenshots/2026-01-26 오전 9_51_43.png" width="45%" alt="실습 1 화면">
-<img src="screenshots/파일명.png" width="45%" alt="실습 2 화면">
-</div>
-<br>
 
 ## 4주차 수업 내용
 1. 부트스트랩 5 이해 및 활용하기 (기본 레이아웃)
@@ -522,3 +517,23 @@
                 - SHA-256 해시 생성 후 폼 전송
             - `success=password_changed` 시 Toast 출력 후 3.5초 뒤 `/logout?next=login`으로 이동
             - `error=wrong_password` 시 Toast + 에러 메시지 표시
+
+## 최종 마무리 수정 사항
+1) 전체 HTML 페이지 공통 수정
+    - 링크 그대로의 하드코딩 -> / 상대경로로 변경
+    - 불필요한 Disabled 제거
+    - window.onload -> window.addEventListener('load', ...) 로 통일 (우선순위 겹침 방지)
+    - onclick="toggleTheme()" 인라인 이벤트 제거 (toggle.js에서 처리)
+2) search.js 수정
+    - 전체 챔피언 이미지 CDN -> 로컬 경로(images/)로 변경
+3) main.css 수정
+    - 중복 스타일 선언 정리
+    - 챔피언 카드 이미지 비율 통일 (aspect-ratio 추가)
+    - 카드 5열 고정 (row-cols-auto > .col { width: 20% })
+4) index.html 수정
+    - 챔피언 카드 형식 통일 (상세 보기 버튼 추가)
+    - 챔피언 모달 8개 추가
+    - modals/ 폴더 신규 파일 추가
+    - 각 챔피언 상세 페이지 생성
+5) download.html 수정
+    - LOL 로고 이미지 추가

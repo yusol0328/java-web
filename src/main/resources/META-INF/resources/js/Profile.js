@@ -1,47 +1,3 @@
-// window.onload = function () {
-//     fetch('/profile/info') // 서버에서 사용자 정보 요청, 비동기 i/o
-//         .then(res => res.json()) // json 파싱
-//         .then(data => {
-//             document.getElementById('infoUsername').textContent
-//                 = data.username; // DOM 조작 방지
-//             document.getElementById('infoEmail').textContent
-//                 = data.email;
-//             document.getElementById('infoPhone').textContent
-//                 = data.phone;
-//             if (data.profileImage) { // null 체크
-//                 document.getElementById('profileImg').src
-//                     = '/uploads/profile/' + data.profileImage;
-//             }
-
-
-//         // 네비바의 사용자명 동적 표시를 위해 상단 주석처리 후 하단 수정 
-//             const profileLink = document.getElementById('profileNavLink');
-//             if (profileLink) {
-//                 profileLink.setAttribute('data-bs-title', '👋' + data.username);
-//                 new bootstrap.Tooltip(profileLink);
-//             }
-//         });
-
-//         //URL 파라미터 오류 감지 추가
-//         const params = new URLSearchParams(window.location.search);
-//         const error = params.get('error');
-
-//         if (error === 'invalid_type') {
-//             const msg = document.getElementById('uploadErrorMsg');
-//             msg.classList.remove('d-none');
-//             msg.textContent = 'jpg, png, gif, webp 파일만 가능합니다.';
-//         } else if (error === 'too_large') {
-//             const msg = document.getElementById('uploadErrorMsg');
-//             msg.classList.remove('d-none');
-//             msg.textContent = '파일 크기는 5MB 이하여야 합니다.';
-//         } else if (error === 'upload_fail') {
-//             const msg = document.getElementById('uploadErrorMsg');
-//             msg.classList.remove('d-none');
-//             msg.textContent = '업로드 실패. 다시 시도해주세요.';
-//         }
-  
-        
-// }
 
 window.addEventListener('load', function () {
     fetch('/profile/info') // 서버에서 사용자 정보 요청, 비동기 i/o
@@ -57,19 +13,13 @@ window.addEventListener('load', function () {
                 document.getElementById('profileImg').src = '/uploads/profile/' + data.profileImage;
             }
 
-            // const profileLink = document.getElementById('profileNavLink');
-            // if (profileLink) {
-            //     profileLink.setAttribute('data-bs-title', '👋' + data.username);
-            //     new bootstrap.Tooltip(profileLink);
-            // }
-
             // 수정 폼에 기존 값 자동 채우기
             if (document.getElementById('updateEmail')) {  //null체크 추가함
                 document.getElementById('updateEmail').value = data.email;
                 document.getElementById('updatePhone').value = data.phone;
             }
 
-        
+
             //Tooltip 으로 사용자명 표시 (navUsername span 방식 → 교체)
             const profileLink = document.getElementById('profileNavLink');
             if (profileLink) {
@@ -77,27 +27,9 @@ window.addEventListener('load', function () {
                 new bootstrap.Tooltip(profileLink);
             }
 
-            
+
         }
-    );
-
-        //URL 파라미터 오류 감지 추가
-        // const params = new URLSearchParams(window.location.search);
-        // const error = params.get('error');
-
-        // if (error === 'invalid_type') {
-        //     const msg = document.getElementById('uploadErrorMsg');
-        //     msg.classList.remove('d-none');
-        //     msg.textContent = 'jpg, png, gif, webp 파일만 가능합니다.';
-        // } else if (error === 'too_large') {
-        //     const msg = document.getElementById('uploadErrorMsg');
-        //     msg.classList.remove('d-none');
-        //     msg.textContent = '파일 크기는 5MB 이하여야 합니다.';
-        // } else if (error === 'upload_fail') {
-        //     const msg = document.getElementById('uploadErrorMsg');
-        //     msg.classList.remove('d-none');
-        //     msg.textContent = '업로드 실패. 다시 시도해주세요.';
-        // }
+        );
 
     //URL 파라미터 오류 감지 추가
     const params = new URLSearchParams(window.location.search);
@@ -149,50 +81,50 @@ window.addEventListener('load', function () {
         }
     }
 
-    }
+}
 
 );
 
 
-        // 회원정보 수정 폼 - 정규식 검사
+// 회원정보 수정 폼 - 정규식 검사
 
-    function validateAndUpdate() {
-        let valid = true;
-        const email = document.getElementById('updateEmail').value.trim();
-        const phone = document.getElementById('updatePhone').value.trim();
-        // ① 이메일 형식 검사
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            showFieldError('updateEmail', 'updateEmailMsg',
-                '올바른 이메일 형식이 아닙니다.');
-            valid = false;
-        } else {
-            clearFieldError('updateEmail');
-        }
-        // ② 연락처 형식 검사
-        const phoneRegex = /^010-\d{4}-\d{4}$/;
-        if (!phoneRegex.test(phone)) {
-            showFieldError('updatePhone', 'updatePhoneMsg',
-                '010-0000-0000 형식으로 입력해주세요.');
-            valid = false;
-        } else {
-            clearFieldError('updatePhone');
-        }
-        if (valid) document.getElementById('updateForm').submit();
+function validateAndUpdate() {
+    let valid = true;
+    const email = document.getElementById('updateEmail').value.trim();
+    const phone = document.getElementById('updatePhone').value.trim();
+    // ① 이메일 형식 검사
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        showFieldError('updateEmail', 'updateEmailMsg',
+            '올바른 이메일 형식이 아닙니다.');
+        valid = false;
+    } else {
+        clearFieldError('updateEmail');
     }
-    // profile.js 전용 showError / clearError
-    function showFieldError(fieldId, msgId, message) {
-        const field = document.getElementById(fieldId);
-        field.classList.add('is-invalid');
-        const msg = document.getElementById(msgId);
-        if (msg) msg.textContent = message;
+    // ② 연락처 형식 검사
+    const phoneRegex = /^010-\d{4}-\d{4}$/;
+    if (!phoneRegex.test(phone)) {
+        showFieldError('updatePhone', 'updatePhoneMsg',
+            '010-0000-0000 형식으로 입력해주세요.');
+        valid = false;
+    } else {
+        clearFieldError('updatePhone');
     }
-    function clearFieldError(fieldId) {
-        const field = document.getElementById(fieldId);
-        field.classList.remove('is-invalid');
-        field.classList.add('is-valid');
-    }
-  
+    if (valid) document.getElementById('updateForm').submit();
+}
+// profile.js 전용 showError / clearError
+function showFieldError(fieldId, msgId, message) {
+    const field = document.getElementById(fieldId);
+    field.classList.add('is-invalid');
+    const msg = document.getElementById(msgId);
+    if (msg) msg.textContent = message;
+}
+function clearFieldError(fieldId) {
+    const field = document.getElementById(fieldId);
+    field.classList.remove('is-invalid');
+    field.classList.add('is-valid');
+}
+
 async function validateAndChangePassword() {
     let valid = true;
     const currentPw = document.getElementById('currentPwInput').value;

@@ -40,11 +40,6 @@ public class AuthResource {
                                 .getClassLoader()
                                 .getResourceAsStream("META-INF/resources/login/login.html");
                 return Response.ok(html).build();
-
-                // InputStream html = getClass()
-                // .getClassLoader()
-                // .getResourceAsStream("META-INF/resources/login/login.html");
-                // return Response.ok(html).build();
         }
 
         @POST // 아이디, 패스워드 전송받음
@@ -71,7 +66,6 @@ public class AuthResource {
                                 .seeOther(URI.create("/after_login"))
                                 .build();
 
-                
         }
 
         @GET
@@ -95,22 +89,6 @@ public class AuthResource {
                                 .getResourceAsStream("META-INF/resources/login/main_after_login.html");
                 return Response.ok(html).build();
         }
-
-        // @GET
-        // @Path("/logout")
-        // public Response logout() {
-        //         // 로그아웃 전 세션 정보 출력
-        //         System.out.println("=== 로그아웃 전 세션 ID : " + context.session().id());
-        //         System.out.println("=== 로그아웃 전 loginUser : " + context.session().get("loginUser"));
-        //         // 세션 전체 삭제
-        //         context.session().destroy();
-        //         // 로그아웃 후 세션 정보 출력
-        //         System.out.println("=== 로그아웃 후 세션 ID : " + context.session().id());
-        //         System.out.println("=== 로그아웃 후 loginUser : " + context.session().get("loginUser"));
-        //         return Response
-        //                         .seeOther(URI.create("/"))
-        //                         .build();
-        //}
 
         // AuthResource.java 아래 새로 추가
         @GET
@@ -355,4 +333,3 @@ public class AuthResource {
         }
 
 }
-

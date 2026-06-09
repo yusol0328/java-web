@@ -7,10 +7,6 @@
     <title>League of Legends - 메인 페이지</title>
     <!-- Bootstrap 5 CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../js/bootstrap.bundle.min.js"></script>
-    <script src="../js/test.js"></script>
-    <script src="../js/test2.js"></script>
-
 
     <!-- 기존 코드 자리에 연동한 css -->
     <link rel="stylesheet" href="../css/main.css">
@@ -18,33 +14,13 @@
 </head>
 
 <body>
-
-    <!-- 헤더 (Navbar) -->
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="http://localhost:8080/index.html">League of Legends</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="https://www.leagueoflegends.com/ko-kr/news/">뉴스</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://www.leagueoflegends.com/ko-kr/champions/">챔피언</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://www.leagueoflegends.com/ko-kr/download/">다운로드</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">로그인</a></li>
-                    <il class="nav-item"><a class="nav-link" href="https://www.leagueoflegends.com/ko-kr/" target="_blank">공식 웹사이트(외부 사이트 연결)</a></il>
-                </ul>
-            </div>
-        </div>
-    </nav> -->
     <!-- 새로운 네비게이션 바 (Navbar) -->
-    <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary"> -->
     <nav class="navbar navbar-expand-lg navbar-dark"> <!--검은색 네비바-->
         <div class="container-fluid">
             <a class="navbar-brand" href="#">네비바</a>
             <img src="../images/LOL.webp.png" alt="" width="30" height="24">
             <!-- [변경] "Navbar" 텍스트 → 다크/라이트 토글 버튼 -->
-            <button class="btn border-0" id="themeToggleBtn" onclick="toggleTheme()">
+            <button class="btn border-0" id="themeToggleBtn">
                 DARK
             </button>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -55,7 +31,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="http://localhost:8080/">메인화면</a>
+                        <a class="nav-link active" aria-current="page" href="/">메인화면</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://www.leagueoflegends.com/ko-kr/news/">뉴스</a>
@@ -64,7 +40,7 @@
                         <a class="nav-link" href="https://www.leagueoflegends.com/ko-kr/champions/">챔피온</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="main_page_sub/download.html">다운로드</a>
+                        <a class="nav-link" href="../main_page_sub/download.html">다운로드</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/login">로그인</a>
@@ -77,33 +53,17 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="https://www.leagueoflegends.com/ko-kr/"
                                     target="_blank">롤공식홈</a></li>
-                            <li><a class="dropdown-item" href="https://www.deeplol.gg/aram?hl=ko" target="_blank">롤전적</a></li>
+                            <li><a class="dropdown-item" href="https://www.deeplol.gg/aram?hl=ko"
+                                    target="_blank">롤전적</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="https://www.youtube.com/@LeagueofLegends-Korea" target="_blank">간편유튜브</a></li>
+                            <li><a class="dropdown-item" href="https://www.youtube.com/@LeagueofLegends-Korea"
+                                    target="_blank">간편유튜브</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                    </li>
                 </ul>
-                <!-- 원래 거 -->
-                <!-- <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-        </form> -->
-                <!-- 피피티 수정 -->
-                <form class="d-flex" id="searchForm">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                        id="searchInput">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-                <!-- 피피티 그대로 -->
-                <!-- <form class="d-flex" id="searchForm">
-        <input class="form-control me-2" type="search" placeholder="챔피언, 뉴스 검색..." aria-label="Search" id="searchInput">
-        <button class="btn btn-outline-success" type="submit">검색하기</button>
-        </form> -->
+                <!-- 서치 폼 불필요하다고 판단되어 삭제 -->
             </div>
         </div>
     </nav>
@@ -123,6 +83,7 @@ justify-content-center text-center py-5">
         </div>
     </section>
 
+
     <!-- 토스트 컨테이너  -->
     <div class="toast-container position-fixed
     bottom-0 end-0 p-3" style="z-index:9999">
@@ -137,9 +98,13 @@ justify-content-center text-center py-5">
         </div>
     </div>
 
-
-    <!-- 검색 자바스크립트  -->
-    <script src="../js/search.js"></script>
+    <!-- 자바스크립트 연동 모음 -->
+    <!-- 부트스트랩 js -->
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <!-- 재선언&재할당&호이스팅 학습용 및 Toast 함수 추가 js -->
+    <script src="../js/test.js"></script>
+    <!-- 탐색&가공 성능 테스트 js -->
+    <script src="../js/test2.js"></script>
     <!-- 토글 자바스크립트 -->
     <script src="../js/toggle.js"></script>
     <!-- 유효성 체크 자바스크립트 -->
@@ -148,9 +113,9 @@ justify-content-center text-center py-5">
     <script src="../js/input_sha256.js"></script>
 
     <script>
-        window.onload = function () {
+        window.addEventListener('load', function () {
             showToast('회원가입 완료!');
-        }
+        });
     </script>
 
 </body>
